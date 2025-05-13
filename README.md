@@ -8,4 +8,8 @@
 </p>
 
 
-# Install Midtrans Via Composser 
+# Install Midtrans With Laravel Composser
+
+1. Install Midtrans Via Composser
+
+composer require midtrans/midtrans-php
