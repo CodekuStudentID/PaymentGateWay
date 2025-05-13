@@ -10,7 +10,48 @@
 
 # Install Midtrans With Laravel Composser
 
-1. Install Midtrans Via Composser
+1. Create New Project
+    ```bash
+    Laravel new Nama-Project
 
-```bash
-composer require midtrans/midtrans-php
+2. Install Midtrans Via Composser 
+    ```bash
+    composer require midtrans/midtrans-php
+
+3. Import Di Controller class Midtrans => server Key Ambil dari Dashboard 
+    Midtrans mode Sandbox
+    ```bash
+    \Midtrans\Config::$serverKey = 'SB-Mid-server-cX68a9tO4FcMQLG7cbz-Psxz';
+    \Midtrans\Config::$isProduction = false;
+    \Midtrans\Config::$isSanitized = true;
+    \Midtrans\Config::$is3ds = true;
+
+    $params = array(
+    'transaction_details' => array(
+        'order_id' => rand(),
+        'gross_amount' => 10000,
+    ),
+    'customer_details' => array(
+        'first_name' => 'budi',
+        'last_name' => 'pratama',
+        'email' => 'budi.pra@example.com',
+        'phone' => '08111222333',
+    ),
+    );
+
+    $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+4. Ambil Snap Token Dengan debug Variable
+    ```bash
+    @dd($snapToken)
+
+5. Tampilkan Token Di Frontend 
+    ```bash
+    <script type="text/javascript">
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+    window.snap.embed("d24f2e02-d95d-4af5-b031-3a78224e8bf1", {
+    embedId: 'snap-container'
+    });
+    });
+    </script>
