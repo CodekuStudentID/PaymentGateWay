@@ -12,4 +12,5 @@
 
 1. Install Midtrans Via Composser
 
+```bash
 composer require midtrans/midtrans-php
