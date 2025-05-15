@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/form', [ProductController::class, 'index'])->name('products.index');
+Route::post('/form/create', [ProductController::class, 'store'])->name('products.store');
+
+Route::get('/products', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::get('/products/{id}', [CheckoutController::class, 'store'])->name('checkout.store');
 
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
 
