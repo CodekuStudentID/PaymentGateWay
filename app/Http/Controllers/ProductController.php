@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index () {
-        return view('admin.form');
+        $data = Product::all();
+        
+        return view('admin.form', compact('data'));
     }
 
     public function store (Request $request) {
@@ -29,4 +31,5 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('session', 'created successfully');
     }
+
 }

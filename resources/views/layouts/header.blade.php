@@ -49,4 +49,6 @@
     </nav>
   </div>
 </header>
+    <body style="display: flex; justify-content: center; margin-top: 10%; gap: 50px;"
+        class="bg-gray-100 min-h-screen flex items-center justify-center">
 @yield('content')
